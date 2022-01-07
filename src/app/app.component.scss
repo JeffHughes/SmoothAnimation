@@ -1,0 +1,19 @@
+.map {
+  height: 90vh;
+  width: 90vw;
+  border: 1px solid black;
+  position: relative;
+}
+
+.point {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+
+  background-color: rebeccapurple;
+
+  transition: all 0.5s linear;
+}
