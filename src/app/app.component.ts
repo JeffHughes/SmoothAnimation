@@ -1,10 +1,8 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ElementRef,
   NgZone,
-  OnInit,
   Renderer2,
   ViewChild,
 } from '@angular/core';
@@ -36,19 +34,16 @@ export class AppComponent implements AfterViewInit {
     for (let i = 0; i < 100; i++) {
       this.path.push({
         x: i + 20,
-        y: Math.sin(i / 10) * 100 + 100 + 20,
-
-        // x: this.randomNumber(),
+        y: Math.sin(i / 10) * 100 + 100 + 20
       });
     }
 
     let counter = 0;
-    let travel = 20; 
+    let travel = 40;
     setInterval(() => {
       let p = this.path[counter++];
       console.log(p.y.toFixed(0));
 
-      //  this. zone.run(() => {
       this.renderer.setStyle(
         this.point.nativeElement,
         'background-color',
@@ -64,12 +59,11 @@ export class AppComponent implements AfterViewInit {
       this.renderer.setStyle(
         this.point.nativeElement,
         'transition',
-         'move ' + (travel / 1000) + 's linear' 
+         'move ' + (travel / 1000) + 's linear'
       );
- 
+
       this.renderer.setStyle(this.point.nativeElement, 'left', p.x + 'px');
       if (counter == this.path.length) counter = 0;
-      // });
     }, travel);
 
     for (let index = 0; index < this.path.length - 1; index++) {
@@ -104,6 +98,6 @@ export class AppComponent implements AfterViewInit {
     this.renderer.setStyle(div, 'transform', 'rotate(' + calc  + 'deg)');
     this.renderer.setStyle(div, 'transform-origin', '0% 0%');
 
-    this.renderer.appendChild(this.lines.nativeElement, div); 
+    this.renderer.appendChild(this.lines.nativeElement, div);
   }
 }
